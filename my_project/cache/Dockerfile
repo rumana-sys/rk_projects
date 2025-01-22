@@ -1,4 +1,5 @@
-# Redis image as the base image
+# Use Redis as the base image
+FROM redis:7
 
-
-# Expose the default Redis port
+# Expose the Redis default port
+EXPOSE 6379

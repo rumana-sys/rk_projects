@@ -1,19 +1,20 @@
-# Python image as the base image (consider version 3.9)
+# Use the official Python image
+FROM python:3.9-slim
 
+# Set the working directory in the container
+WORKDIR /app
 
-# Set the working directory inside the container as /app
+# Copy requirements.txt to the container
+COPY requirements.txt .
 
-
-# Copy requirements.txt to the working directory
-COPY requirements.txt ./
-
-# Install project dependancies 
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project directory into the container
+# Copy the rest of the application code
 COPY . .
 
-# Expose the port on which the web server will listen
+# Expose the port your app runs on
 EXPOSE 8080
 
-# Define the command to start the web server
+# Command to run the application
+CMD ["python", "app.py"]
